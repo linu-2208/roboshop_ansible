@@ -56,8 +56,8 @@
       name: mongodb-org-shell
       state: present
 
-  - name: get the categegories counr
-    ansible.builtin,command: mongo --host mongodb.myver.shop --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
+  - name: get the categerious count
+    ansible.builtin.command: mongo --host mongodb.myver.shop --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
     register: product_count
 
   - name: print the count
