@@ -30,3 +30,29 @@
       dest: /app
       remote_src: yes
 
+  - name: Install dependencies
+    ansible.builtin.command: npm install
+    args:
+      chdir: /app
+
+  - name: copy mongodb repo
+    ansible.builtin.copy: 
+      src: catalogue.repo
+      dest: /etc/systemd/system/catalogue.service
+
+  - name: deamon reload and start
+    ansible.builtin.systemd_services:
+      deamon_reload: true
+
+  #;ets start after data is reloaded
+
+  - name: Copy mongodb repo
+    ansible.builtin.copy:
+      src: mongodb.repo
+      dest: /etc/yum.repos.d/mongodb.repo
+
+  - name: Install mongodb client
+    ansible.builtin.package:
+      name: mongodb-org-shell
+      state: present
+
