@@ -9,3 +9,23 @@
     ansible.builtin.dnf:
       name: nodejs
       state: present
+
+  - name: create roboshop user
+    ansible.builtin.user:
+      name: roboshop
+
+  - name: create app directory
+    ansible.builtin.file:
+      path: /app
+      state: directory
+  
+  - name: download catalouge
+    ansible.builtin.get_url:
+      url:  https://roboshop-builds.s3.amazonaws.com/catalogue.zip
+      dest: /tmp
+
+  - name: extract catalouge application
+    ansible.builtin.unarchive:
+      src: /tmp/catalogue.zip
+      dest: /app
+
