@@ -63,3 +63,7 @@
   - name: print the count
     ansible.builtin.debug:
       msg: "product count: {{product_count}}"
+      
+  - name: load catalouge data
+    ansible.builtin.command: mongo --host mongodb.myver.shop < /app/schema/catalogue.js
+    when: product_count.stdout== "0"
