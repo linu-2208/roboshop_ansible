@@ -7,5 +7,5 @@
 
   - name: install nodejs
     ansible.builtin.dnf:
-      name: nofdejs
+      name: nodejs
       state: present
