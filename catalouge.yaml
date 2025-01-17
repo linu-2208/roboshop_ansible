@@ -37,12 +37,12 @@
 
   - name: copy mongodb repo
     ansible.builtin.copy: 
-      src: catalogue.repo
+      src: catalogue.service
       dest: /etc/systemd/system/catalogue.service
 
-  - name: deamon reload and start
-    ansible.builtin.systemd_services:
-      deamon_reload: true
+  - name: deamon realod and start
+    ansible.builtin.systemd_service:
+      daemon_reload: true
 
   #;ets start after data is reloaded
 
