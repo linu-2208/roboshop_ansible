@@ -60,9 +60,9 @@
     ansible.builtin.command:  mongo --host mongodb.daws76s.online --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
     register: product_count
 
-  - name: print the count
-    ansible.builtin.debug:
-      msg: "product count: {{product_count}}"
+  #- name: print the count
+   #  ansible.builtin.debug:
+   #   msg: "product count: {{product_count}}"
 
   - name: load catalouge data
     ansible.builtin.command: mongo --host mongodb.myver.shop < /app/schema/catalogue.js
